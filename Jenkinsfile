@@ -21,6 +21,8 @@ node {
 
   stage 'Upload docker container'
   docker.withRegistry('https://hub.docker.com/r/stijnm/railsgoat/', 'docker-hub') {
+    container.push();
+  }
 
   //def maven = docker.image('maven:3.3.9-jdk-8'); // https://registry.hub.docker.com/_/maven/
 
