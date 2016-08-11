@@ -10,8 +10,8 @@ node {
   stage 'Run rspec'
 
   container.inside {
-    sh "rspec db:setup"
-    sh "rspec training"
+    sh "rake db:setup"
+    sh "rake training"
   }
 
   //def maven = docker.image('maven:3.3.9-jdk-8'); // https://registry.hub.docker.com/_/maven/
