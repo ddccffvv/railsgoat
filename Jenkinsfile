@@ -3,10 +3,15 @@ node {
 
   git 'https://github.com/ddccffvv/railsgoat.git'
 
-  stage 'Build'
+  stage 'Bake docker container'
 
-  docker.build("test/bla:latest").inside {
-    sh 'ls'
+  def container = docker.build("test/bla:latest")
+
+  stage 'Run rspec'
+
+  container.inside {
+    sh "rspec db:setup"
+    sh "rspec training"
   }
 
   //def maven = docker.image('maven:3.3.9-jdk-8'); // https://registry.hub.docker.com/_/maven/
