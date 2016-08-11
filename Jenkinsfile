@@ -20,7 +20,7 @@ node {
   }
 
   stage 'Upload docker container'
-  docker.withRegistry('https://hub.docker.com/r/stijnm/railsgoat/', 'docker-hub') {
+  docker.withRegistry('https://hub.docker.com/r/stijnm/railsgoat/', 'dockerr-hub') {
     container.push();
   }
 
