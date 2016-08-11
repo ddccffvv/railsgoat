@@ -7,12 +7,20 @@ node {
 
   def container = docker.build("test/bla:latest")
 
-  stage 'Run rspec'
+  stage 'Setup database'
 
   container.inside {
     sh "rake db:setup"
+  }
+
+  stage 'Run first tests'
+
+  container.inside {
     sh "rake training"
   }
+
+  stage 'Upload docker container'
+  docker.withRegistry('https://hub.docker.com/r/stijnm/railsgoat/', 'docker-hub') {
 
   //def maven = docker.image('maven:3.3.9-jdk-8'); // https://registry.hub.docker.com/_/maven/
 
