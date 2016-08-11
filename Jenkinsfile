@@ -3,6 +3,8 @@ node {
 
   git 'https://github.com/ddccffvv/railsgoat.git'
 
+  stage 'Build'
+
   docker.build("test/bla:latest").inside {
     sh 'ls'
   }
