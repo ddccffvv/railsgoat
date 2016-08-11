@@ -5,7 +5,7 @@ node {
 
   stage 'Bake docker container'
 
-  def container = docker.build("test/bla:latest")
+  def container = docker.build("stijnm/railsgoat:latest")
 
   stage 'Setup database'
 
